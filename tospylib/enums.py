@@ -5,10 +5,14 @@ class FundamentalType(Enum):
     OPEN = "Open"
     HIGH = "High"
     LOW = "Low"
+    VOLUME = "Volume"
 
 class AggregationPeriod(Enum):
+    MINUTE = "1min"
+    FIVE_MIN = "5min"
+    FIFTEEN_MIN = "15min"
+    HOUR = "1H"
     DAY = "1D"
-    THREE_DAYS = "3D"
     WEEK = "1W"
     MONTH = "1M"
 
