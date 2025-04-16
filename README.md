@@ -25,3 +25,8 @@
 
 ```bash
 pip install -r requirements.txt
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+© 2025 Project Hamburg Research Inc.  
+*Legacy Code Preservation Charter Project: Thinkscript to Python translation for open research, public good, and LLM accessibility.*
