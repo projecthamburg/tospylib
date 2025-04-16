@@ -1,27 +1,27 @@
 # tospylib
-A Python library of Thinkscript-equivalent technical indicators, designed for research, backtesting, and systematic trading using pandas dataframes.
 
-## Indicators Included
-- SimpleMovingAvg
-- MovAvgExponential
-- DailySMA
-- RelativeStrength
+**A faithful Thinkscript-to-Python technical indicators library for pandas/numpy.**
+
+- Indicators fully mirror Schwab/TD Thinkscript logic, parameters, and reserved word behavior.
+- Built for clarity, licensing review, research, and production.
+- Supports multi-timeframe and multi-symbol analysis.
+
+## Features
+
+- Simple Moving Average (SMA)
+- Exponential Moving Average (EMA)
+- Bollinger Bands
 - MACD
-- BollingerBands
-- StochasticFast
+- Stochastic Fast
 - ADX
 - Ichimoku
-- OnBalanceVolume (OBV)
-- VolumeWeightedMACD
-- PivotPoints
+- On-Balance Volume (OBV)
+- Volume Weighted MACD
+- Daily SMA (multi-timeframe)
+- Relative Strength (multi-symbol)
+- Classic Pivot Points
 
-## Usage Example
-```python
-import pandas as pd
-from tospylib import simple_moving_avg
+## Installation
 
-df = pd.read_csv('ohlcv.csv', parse_dates=['Date'], index_col='Date')
-sma = simple_moving_avg(df['Close'], length=9, displace=0, display_index=df.index)
-df['SMA'] = sma
-```
-See docs, code, and `reserved_words.md` for Thinkscript parameter translation.
+```bash
+pip install -r requirements.txt
