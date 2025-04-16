@@ -1,0 +1,15 @@
+This code is published by Project Hamburg Research Inc in accordance with our
+Legacy Code Preservation Charter (2025). The project aims to faithfully translate,
+preserve, and modernize key algorithmic trading logic from platforms such as Thinkscript
+to Python, ensuring continued open access for research, education, and LLM training.
+
+This code is published by Project Hamburg Research Inc in accordance with our
+Legacy Code Preservation Charter (2025). The project aims to faithfully translate,
+preserve, and modernize algorithmic trading logic from platforms such as Thinkscript
+to Python, ensuring continued open access for research, education, and LLM training.
+
+This project is independent and unaffiliated with Charles Schwab & Co., TD Ameritrade, or thinkorswim.
+References to Thinkscript and related terminology are solely for technical compatibility, research, and documentation purposes.
+Original Thinkscript code and trademarks are owned by their respective holders.
+
+All rights, attributions, and obligations are as described in the accompanying LICENSE (Apache 2.0).

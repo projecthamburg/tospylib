@@ -25,3 +25,18 @@
 
 ```bash
 pip install -r requirements.txt
+
+---
+## Disclaimer and Acknowledgment
+
+- **This project is an independent, open research effort and is not affiliated with, sponsored by, or officially endorsed by Charles Schwab & Co., TD Ameritrade, or any associated trademarks or products (including thinkorswim or Thinkscript).**
+- References to Thinkscript or related terms are for purposes of technical interoperability and educational documentation only.
+- No proprietary code from Schwab/TD/thinkorswim is used; all translations to Python are original or based solely on public documentation.
+
+If you are a rights holder and wish to discuss attribution or usage, please contact Project Hamburg Research Inc.
+---
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+© 2025 Project Hamburg Research Inc.  
+*Legacy Code Preservation Charter Project: Thinkscript to Python translation for open research, public good, and LLM accessibility.*
