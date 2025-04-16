@@ -27,6 +27,44 @@ def volume_weighted_macd(close, volume, fast_length=12, slow_length=26, macd_len
         "Avg": avg,
         "Diff": diff,
     }, index=close.index)
+    
+    # Handle display_index if provided
     if display_index is not None:
-        result = result.reindex(display_index, method='ffill')
+        if len(display_index) == 0:  # Handle empty index case
+            return pd.DataFrame(index=display_index, columns=result.columns)
+        
+        # Create a new dataframe with the target index
+        reindexed = pd.DataFrame(index=display_index, columns=result.columns)
+        
+        # Get the common dates between original and new index
+        common_dates = sorted(set(result.index).intersection(set(display_index)))
+        
+        # Copy values for common dates
+        if common_dates:
+            for date in common_dates:
+                reindexed.loc[date] = result.loc[date].astype(float)
+        
+        # Forward fill for dates in display_index not in original index
+        if len(result) > 0:  # Only if we have data
+            # Convert indices to pandas indexes if they're not already
+            result_idx = pd.Index(result.index)
+            display_idx = pd.Index(display_index)
+            
+            # For dates not in common
+            for date in display_idx.difference(common_dates):
+                # Find the closest previous date
+                try:
+                    mask = result_idx < date
+                    if mask.any():
+                        closest_idx = result_idx[mask].max()
+                        reindexed.loc[date] = result.loc[closest_idx].astype(float)
+                except:
+                    # If comparison fails, use last row as fallback
+                    if len(result) > 0:
+                        reindexed.loc[date] = result.iloc[-1].astype(float)
+        
+        # Fill any remaining NaN values
+        reindexed = reindexed.ffill().fillna(0)
+        return reindexed
+    
     return result

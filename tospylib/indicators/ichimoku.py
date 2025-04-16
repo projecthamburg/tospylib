@@ -31,6 +31,44 @@ def ichimoku(high, low, close, tenkan_period=9, kijun_period=26, display_index=N
         "SenkouB": senkou_b,
         "Chikou": chikou,
     }, index=close.index)
+    
+    # Handle display_index if provided
     if display_index is not None:
-        ichimoku_df = ichimoku_df.reindex(display_index, method='ffill')
+        if len(display_index) == 0:  # Handle empty index case
+            return pd.DataFrame(index=display_index, columns=ichimoku_df.columns)
+        
+        # Create a new dataframe with the target index
+        reindexed = pd.DataFrame(index=display_index, columns=ichimoku_df.columns)
+        
+        # Get the common dates between original and new index
+        common_dates = sorted(set(ichimoku_df.index).intersection(set(display_index)))
+        
+        # Copy values for common dates
+        if common_dates:
+            for date in common_dates:
+                reindexed.loc[date] = ichimoku_df.loc[date].astype(float)
+        
+        # Forward fill for dates in display_index not in original index
+        if len(ichimoku_df) > 0:  # Only if we have data
+            # Convert indices to pandas indexes if they're not already
+            df_idx = pd.Index(ichimoku_df.index)
+            display_idx = pd.Index(display_index)
+            
+            # For dates not in common
+            for date in display_idx.difference(common_dates):
+                # Find the closest previous date
+                try:
+                    mask = df_idx < date
+                    if mask.any():
+                        closest_idx = df_idx[mask].max()
+                        reindexed.loc[date] = ichimoku_df.loc[closest_idx].astype(float)
+                except:
+                    # If comparison fails, use last row as fallback
+                    if len(ichimoku_df) > 0:
+                        reindexed.loc[date] = ichimoku_df.iloc[-1].astype(float)
+        
+        # Fill any remaining NaN values
+        reindexed = reindexed.ffill()
+        return reindexed
+    
     return ichimoku_df
