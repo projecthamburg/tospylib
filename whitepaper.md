@@ -1,4 +1,5 @@
 # 📜 Project Hamburg Code Preservation Charter
+*April 16th, 2025*
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Python%203.8%2B-blue.svg)](https://www.python.org/)
