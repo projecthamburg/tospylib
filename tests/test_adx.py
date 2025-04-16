@@ -8,7 +8,7 @@ def test_adx():
         'Close': range(5, 45)
     })
     result = adx(df['High'], df['Low'], df['Close'])
-    assert set(result.columns) == {"ADX","DI+","DI-"}
+    assert set(result.columns) == {"ADX", "+DI", "-DI"}
     assert len(result) == len(df)
     assert (result['ADX'] >= 0).all() and (result['ADX'] <= 100).all()
 

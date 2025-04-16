@@ -2,7 +2,7 @@
 ADX Indicator
 Thinkscript formula reference: ADX
 Inputs: input length=14; input averageType=AverageType.WILDERS;
-For explicit Thinkscript parameter definitions, see reserved_words.md.
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 """
 import pandas as pd
 import numpy as np
@@ -31,12 +31,18 @@ def adx(high, low, close, length=14, displace=0, display_index=None):
     pd.DataFrame
         DataFrame with columns:
         - ADX: Average Directional Index
-        - DI+: Plus Directional Indicator
-        - DI-: Minus Directional Indicator
+        - +DI: Plus Directional Indicator
+        - -DI: Minus Directional Indicator
     """
-    high_shifted = pd.Series(high).shift(-displace)
-    low_shifted = pd.Series(low).shift(-displace)
-    close_shifted = pd.Series(close).shift(-displace)
+    # Convert inputs to Series if they aren't already
+    high = pd.Series(high)
+    low = pd.Series(low)
+    close = pd.Series(close)
+    
+    # Shift data if needed
+    high_shifted = high.shift(-displace)
+    low_shifted = low.shift(-displace)
+    close_shifted = close.shift(-displace)
     
     # Calculate True Range
     tr1 = high_shifted - low_shifted
@@ -60,6 +66,11 @@ def adx(high, low, close, length=14, displace=0, display_index=None):
     dx = 100 * abs(plus_di - minus_di) / (plus_di + minus_di)
     adx = dx.ewm(span=length, adjust=False).mean()
     
+    # Handle NaN values
+    adx = adx.fillna(0)
+    plus_di = plus_di.fillna(0)
+    minus_di = minus_di.fillna(0)
+    
     if display_index is not None:
         adx = adx.reindex(display_index, method="ffill")
         plus_di = plus_di.reindex(display_index, method="ffill")
@@ -67,6 +78,6 @@ def adx(high, low, close, length=14, displace=0, display_index=None):
     
     return pd.DataFrame({
         'ADX': adx,
-        'DI+': plus_di,
-        'DI-': minus_di
+        '+DI': plus_di,
+        '-DI': minus_di
     })

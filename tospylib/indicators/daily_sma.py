@@ -11,6 +11,7 @@ def daily_sma(
 ):
     """
     Robust Daily SMA, broadcast by calendar date!
+    For explicit Thinkscript parameter definitions, see ../reserved_words.md.
     """
     # Compute rolling on daily
     daily_sma_series = calculation_df[price_type].rolling(window=length, min_periods=1).mean()

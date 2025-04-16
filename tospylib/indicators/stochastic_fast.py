@@ -2,7 +2,7 @@
 StochasticFast Indicator
 Thinkscript formula reference: StochasticFast
 Inputs: input over_bought=80; input over_sold=20; input KPeriod=10; input DPeriod=3; input priceH=high; input priceL=low; input priceC=close; input averageType=AverageType.SIMPLE; input showBreakoutSignals={...};
-For explicit Thinkscript parameter definitions, see reserved_words.md.
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 """
 import pandas as pd
 import numpy as np

@@ -2,6 +2,7 @@
 Pivot Points
 Thinkscript reference: PivotPoints (source not available)
 Standard implementation based on daily/week/month OHLC
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 Inputs:
     high: Series
     low: Series
@@ -36,26 +37,30 @@ def pivot_points(high, low, close, timeframe="DAY", display_index=None):
     pd.DataFrame
         DataFrame with columns: R3, R2, R1, PP, S1, S2, S3
     """
+    # Convert inputs to Series if they aren't already
+    high = pd.Series(high)
+    low = pd.Series(low)
+    close = pd.Series(close)
+    
     # This is a standard implementation for classic Pivot Points
     if timeframe not in {"DAY", "WEEK", "MONTH"}:
         raise ValueError("timeframe must be DAY, WEEK, or MONTH")
-    resample_rule = {"DAY": "1D", "WEEK": "1W", "MONTH": "1M"}[timeframe]
-    resampled = pd.DataFrame({
-        "High": high.resample(resample_rule).max(),
-        "Low": low.resample(resample_rule).min(),
-        "Close": close.resample(resample_rule).last(),
-    })
-    PP = (resampled["High"] + resampled["Low"] + resampled["Close"]) / 3
-    R1 = 2*PP - resampled["Low"]
-    S1 = 2*PP - resampled["High"]
-    R2 = PP + (resampled["High"] - resampled["Low"])
-    S2 = PP - (resampled["High"] - resampled["Low"])
-    R3 = resampled["High"] + 2*(PP - resampled["Low"])
-    S3 = resampled["Low"] - 2*(resampled["High"] - PP)
+    
+    # Calculate pivot points directly without resampling
+    PP = (high + low + close) / 3
+    R1 = 2*PP - low
+    S1 = 2*PP - high
+    R2 = PP + (high - low)
+    S2 = PP - (high - low)
+    R3 = high + 2*(PP - low)
+    S3 = low - 2*(high - PP)
+    
     pivots = pd.DataFrame({
         "R3": R3, "R2": R2, "R1": R1, "PP": PP, "S1": S1, "S2": S2, "S3": S3
-    }, index=PP.index)
+    }, index=close.index)
+    
     # Broadcast to line up with original (display) index
     if display_index is not None:
         pivots = pivots.reindex(display_index, method='ffill')
+    
     return pivots

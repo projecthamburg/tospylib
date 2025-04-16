@@ -1,6 +1,7 @@
 """
 Volume Weighted MACD
 Thinkscript reference: VolumeWeightedMACD
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 Inputs:
     close: Series
     volume: Series
@@ -9,7 +10,7 @@ Inputs:
     macd_length: int (default 9)
     display_index: pandas.Index or None
 Outputs:
-    DataFrame: Value, Avg, Diff, ZeroLine
+    DataFrame: Value, Avg, Diff
 """
 import pandas as pd
 import numpy as np
@@ -21,12 +22,10 @@ def volume_weighted_macd(close, volume, fast_length=12, slow_length=26, macd_len
     value = vw_fast - vw_slow
     avg = IndicatorUtils.exp_moving_avg(value, macd_length)
     diff = value - avg
-    zero_line = pd.Series(0, index=close.index)
     result = pd.DataFrame({
         "Value": value,
         "Avg": avg,
         "Diff": diff,
-        "ZeroLine": zero_line,
     }, index=close.index)
     if display_index is not None:
         result = result.reindex(display_index, method='ffill')

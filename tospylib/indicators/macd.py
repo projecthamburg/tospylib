@@ -2,7 +2,7 @@
 MACD Indicator
 Thinkscript formula reference: MACD
 Inputs: input fastLength=12; input slowLength=26; input MACDLength=9; input averageType=AverageType.EXPONENTIAL; input showBreakoutSignals=no;
-For explicit Thinkscript parameter definitions, see reserved_words.md.
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 """
 import pandas as pd
 import numpy as np

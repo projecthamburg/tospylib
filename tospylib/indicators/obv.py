@@ -1,6 +1,7 @@
 """
 On-Balance Volume (OBV)
 Thinkscript reference: OBV
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 Inputs:
     close: Series
     volume: Series

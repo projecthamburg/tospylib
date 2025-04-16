@@ -133,3 +133,149 @@ For partnership, questions, or legal clarifications:
 ---
 
 **Let the preservation of open knowledge, algorithmic creativity, and platform compatibility continue—for all.**
+
+## Technical Architecture
+
+```mermaid
+graph TD
+    subgraph "Core Components"
+        A[Indicator Base] --> B[Data Processing]
+        A --> C[Parameter Validation]
+        A --> D[Result Formatting]
+    end
+    
+    subgraph "Indicator Types"
+        E[Basic Indicators] --> E1[SMA]
+        E --> E2[EMA]
+        E --> E3[Daily SMA]
+        
+        F[Complex Indicators] --> F1[MACD]
+        F --> F2[Bollinger Bands]
+        F --> F3[Ichimoku]
+        
+        G[Volume Indicators] --> G1[OBV]
+        G --> G2[VWAP]
+    end
+    
+    subgraph "Support Systems"
+        H[Testing Framework] --> H1[Unit Tests]
+        H --> H2[Integration Tests]
+        
+        I[Documentation] --> I1[reserved_words.md]
+        I --> I2[whitepaper.md]
+        I --> I3[Examples]
+    end
+    
+    A --> E
+    A --> F
+    A --> G
+    B --> H
+    C --> H
+    D --> H
+```
+
+## Contributor Guidelines
+
+### Technical Design Principles
+
+1. **Faithful Thinkscript Translation**
+   - Maintain exact parameter names and defaults
+   - Preserve calculation logic
+   - Document any deviations
+
+2. **Data Processing**
+   - Use pandas Series/DataFrame for input/output
+   - Handle missing data consistently
+   - Support multi-timeframe analysis
+
+3. **Performance Considerations**
+   - Vectorize calculations where possible
+   - Minimize memory usage
+   - Cache intermediate results
+
+4. **Testing Requirements**
+   - Unit tests for core functionality
+   - Edge case coverage
+   - Performance benchmarks
+   - Comparison with Thinkscript output
+
+### Development Workflow
+
+1. **Indicator Development**
+   ```python
+   # 1. Research Thinkscript implementation
+   # 2. Create indicator file
+   # 3. Implement core logic
+   # 4. Add type hints and docstrings
+   # 5. Write tests
+   # 6. Update documentation
+   ```
+
+2. **Testing Strategy**
+   ```python
+   # 1. Basic functionality
+   def test_basic_functionality():
+       # Test with simple data
+       pass
+   
+   # 2. Edge cases
+   def test_edge_cases():
+       # Test with edge cases
+       pass
+   
+   # 3. Performance
+   def test_performance():
+       # Benchmark against Thinkscript
+       pass
+   ```
+
+3. **Documentation Standards**
+   - Clear parameter descriptions
+   - Usage examples
+   - Performance characteristics
+   - Known limitations
+
+4. **Code Review Checklist**
+   - [ ] Follows Thinkscript logic
+   - [ ] Proper error handling
+   - [ ] Complete test coverage
+   - [ ] Updated documentation
+   - [ ] Performance optimized
+   - [ ] Type hints present
+   - [ ] Docstrings complete
+
+### Performance Optimization
+
+1. **Vectorization**
+   - Use pandas/numpy operations
+   - Avoid loops where possible
+   - Leverage built-in functions
+
+2. **Memory Management**
+   - Release unused data
+   - Use appropriate data types
+   - Minimize copies
+
+3. **Caching Strategy**
+   - Cache intermediate results
+   - Use appropriate cache size
+   - Clear cache when needed
+
+### Quality Assurance
+
+1. **Testing Coverage**
+   - Unit tests for all functions
+   - Integration tests for workflows
+   - Performance tests for critical paths
+
+2. **Documentation Quality**
+   - Clear parameter descriptions
+   - Usage examples
+   - Edge case handling
+   - Performance considerations
+
+3. **Code Quality**
+   - PEP 8 compliance
+   - Type hints
+   - Docstring standards
+   - Error handling

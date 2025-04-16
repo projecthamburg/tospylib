@@ -86,3 +86,26 @@ TospyLib equivalent: `open` parameter in indicator functions
 ### volume
 Thinkscript documentation: The trading volume of the current bar.
 TospyLib equivalent: `volume` parameter in indicator functions
+
+## Technical Indicators
+### Pivot Points
+Thinkscript documentation: Standard pivot points are calculated using the previous period's high, low, and close prices. They provide potential support and resistance levels.
+TospyLib equivalent: `pivot_points` function
+
+Note: While ThinkScript provides a built-in pivot points study, it doesn't explicitly document the calculation formulas. The following equations are standard technical analysis formulas used across the industry:
+
+Calculation:
+- Pivot Point (PP) = (High + Low + Close) / 3
+- Resistance 1 (R1) = 2*PP - Low
+- Support 1 (S1) = 2*PP - High
+- Resistance 2 (R2) = PP + (High - Low)
+- Support 2 (S2) = PP - (High - Low)
+- Resistance 3 (R3) = High + 2*(PP - Low)
+- Support 3 (S3) = Low - 2*(High - PP)
+
+Parameters:
+- high: Series of high prices
+- low: Series of low prices
+- close: Series of close prices
+- timeframe: Aggregation period ("DAY", "WEEK", "MONTH")
+- display_index: Optional index for alignment with other data

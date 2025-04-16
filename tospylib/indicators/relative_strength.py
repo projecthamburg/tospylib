@@ -2,7 +2,7 @@
 RelativeStrength Indicator
 Thinkscript formula reference: RelativeStrength
 Inputs: input CorrelationWithSecurity="SPX";
-For explicit Thinkscript parameter definitions, see reserved_words.md.
+For explicit Thinkscript parameter definitions, see ../reserved_words.md.
 """
 import pandas as pd
 import numpy as np
