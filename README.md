@@ -1,7 +1,7 @@
 # tospylib
 
 ## Consultation
-[📅 Schedule a Consultation](https://embed.ycb.me/?domain=phr-consultation)
+<a href="https://phr-consultation.youcanbook.me/" style="display:inline-block; background-color:#0366d6; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">Schedule a Consultation</a>
 
 **A faithful Thinkscript-to-Python technical indicators library for pandas/numpy.**
 
