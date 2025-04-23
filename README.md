@@ -1,7 +1,12 @@
-# tospylib
+## Support Our Mission
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue?style=for-the-badge&logo=paypal)](https://www.paypal.com/us/fundraiser/charity/5501979)
+*Your donation is tax-deductible - we are a 501(c)(3) nonprofit organization.*
 
 ## Consultation
-<a href="https://phr-consultation.youcanbook.me/" style="display:inline-block; background-color:#0366d6; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">Schedule a Consultation</a>
+[![Schedule Consultation](https://img.shields.io/badge/Schedule-Consultation-blue?style=for-the-badge&logo=calendar)](https://phr-consultation.youcanbook.me/)
+
+
+# tospylib
 
 **A faithful Thinkscript-to-Python technical indicators library for pandas/numpy.**
 
