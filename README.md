@@ -1,5 +1,11 @@
 # tospylib
 
+## Consultation
+<script src="https://embed.ycb.me"
+	async="true"
+	data-domain="phr-consultation"
+	data-displaymode="auto"></script>
+
 **A faithful Thinkscript-to-Python technical indicators library for pandas/numpy.**
 
 - Indicators fully mirror Schwab/TD Thinkscript logic, parameters, and reserved word behavior.
