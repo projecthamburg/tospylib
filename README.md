@@ -1,10 +1,7 @@
 # tospylib
 
 ## Consultation
-<script src="https://embed.ycb.me"
-	async="true"
-	data-domain="phr-consultation"
-	data-displaymode="auto"></script>
+[📅 Schedule a Consultation](https://embed.ycb.me/?domain=phr-consultation)
 
 **A faithful Thinkscript-to-Python technical indicators library for pandas/numpy.**
 
